@@ -31,4 +31,8 @@ st.write(wartosc)
 
 #download button - dodaje _ po każdej literce w wartosc
 txt_for_download = "_".join(list(wartosc))
-st.download_button("Pobierz zmodyfikowany input", txt_for_download)
+st.download_button(
+    label="Pobierz zmodyfikowany input",
+    data=txt_for_download,
+    file_name=f'{wartosc}.txt'
+    )
