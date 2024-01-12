@@ -1,7 +1,6 @@
 #Pokażę parę fajnych rzeczy
 import streamlit as st
 import numpy as np
-import base64
 
 #Moduł streamlit całkowicie eliminuje konieczność używania
 #HTML/JS/CSS w sytuacjach, gdzie nie musimy spersonalizować
@@ -31,11 +30,5 @@ wartosc = st.text_input("User input: ", "boop")
 st.write(wartosc)
 
 #download button - dodaje _ po każdej literce w wartosc
-def downloadtxt():
-    txt_for_download = "_".join(list(wartosc))
-    b64 = base64.b64encode(txt_for_download.encode()).decode()
-    href = f'<a href="data:file/txt;base64,{b64}" download="sample.txt">Download Text File</a>'
-    st.markdown(href, unsafe_allow_html=True)
-    
-if st.button("Pobierz"):
-    downloadtxt()
+txt_for_download = "_".join(list(wartosc))
+st.download_button("Pobierz zmodyfikowany input", txt_for_download)
